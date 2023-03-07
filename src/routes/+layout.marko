@@ -1,51 +1,21 @@
-style {
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 100%;
-  }
-
-  header {
-    background: pink;
-    padding: 1rem;
-  }
-
-  footer {
-    background: lightgray;
-    padding: 1rem;
-    margin-top: auto;
-  }
-
-  main {
-    padding: 1rem;
-  }
-}
-
+import styles from "../styles/global.css?inline";
+export type Input = {
+  head?: Marko.Body,
+  renderBody: Marko.Body,
+};
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta
-      name="description"
-      content="An example application showcasing Vite & Marko."
-    >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <${input.head}/>
-    <title>@marko/run - Netlify</title>
+    <if(!input.head)>
+      <meta name="description" content="A Remarkable Notes App.">
+      <title>Remarkable Notes</title>
+    </if>
+    <else><${input.head}/></else>
+    <style>${styles}</style>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/">Home</a> |
-        <a href="/users">Users</a> |
-        <a href="/nowhere">Nowhere</a>
-      </nav>
-    </header>
-    <${input.renderBody} />
-    <footer>
-      <small>Footer</small>
-    </footer>
+    <main class="m-8 "><${input.renderBody}/></main>
   </body>
 </html>

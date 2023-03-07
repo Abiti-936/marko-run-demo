@@ -1,9 +1,39 @@
-style {
-  main {
-    background: lightcyan;
-  }
-}
+import { getNotes } from "../lib/query";
 
-<main>
-  <h1>Home!!</h1>
-</main>
+<h1 class=" mb-6 mx-2 text-xl font-medium">Notes</h1>
+
+<await(getNotes()) client-reorder>
+  <@then|notes|>
+    <ul class=" space-y-2">
+      <for|note| of=notes!>
+        <li class=" mx-2">
+          <div class=" max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-[#121212] dark:border-gray-700">
+            <span class=" mb-2 text-lg font-medium text-gray-900 dark:text-white trancate">
+              ${note?.title}
+            </span>
+            <p class=" text-sm mb-2 font-normal text-gray-500 dark:text-gray-400">
+              ${new Date(note?.created_at ?? "").toUTCString()}
+            </p>
+
+            <a
+              class=" flex items-center space-x-2 mt-2 text-2xl"
+              href=`/note/${note?.slug}`
+            >
+              <span class=" text-base">Details</span>
+
+              <span>&#8594;</span>
+            </a>
+          </div>
+        </li>
+      </for>
+    </ul>
+    /* <a class=" flex items-center space-x-2 mt-4 mx-2 text-2xl" href=`/create`>
+      <span class=" text-base">
+        Create ${notes?.length ? "more notes" : "a note"}
+      </span>
+
+      <span>&#8594;</span>
+    </a> */
+  </@then>
+  <@placeholder><spinner/></@placeholder>
+</await>

@@ -1,0 +1,37 @@
+import { getNote } from "../../../lib/query";
+
+<await(getNote(input.params?.slug)) client-reorder>
+  <@then|note|>
+    <div class=" flex items-center justify-between mb-6">
+      <h1 class=" text-lg font-medium">${note?.title}</h1>
+
+      <form method="post">
+        <label.hidden for="slug">Delete Note</label>
+        <input#slug name="slug" type="hidden" value=(input.params?.slug ?? "")>
+        // <dots slug=(input.params.slug ?? "")/>
+
+      </form>
+    </div>
+    <div class=" flex items-center justify-start space-x-3 mb-6">
+      <h1>By ${note?.author?.name}</h1>
+
+      <img
+        class=" w-6 h-6 rounded-full"
+        src=(note?.author?.avatar_url)
+        alt=`${note?.author?.name} Image`
+      >
+    </div>
+
+    <div#accordion-color-body-1
+      class=""
+      aria-labelledby="accordion-color-heading-1"
+    >
+      <div class=" p-5 font-light border rounded-xl border-gray-200 dark:border-gray-700 dark:bg-[#121212] gray-900">
+        <section class=" text-base font-normal mb-2 text-gray-500 dark:text-white">
+          <div class=" prose dark:prose-invert">$!{note?.body}</div>
+        </section>
+      </div>
+    </div>
+  </@then>
+  <@placeholder><spinner/></@placeholder>
+</await>

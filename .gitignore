@@ -1,0 +1,6 @@
+/netlify
+.netlify
+dist
+build
+node_modules
+.marko-run

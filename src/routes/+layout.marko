@@ -1,4 +1,4 @@
-import styles from "../styles/global.css?inline";
+import  "../styles/global.css";
 export type Input = {
   head?: Marko.Body,
   renderBody: Marko.Body,
@@ -13,7 +13,6 @@ export type Input = {
       <title>Remarkable Notes</title>
     </if>
     <else><${input.head}/></else>
-    <style>${styles}</style>
   </head>
   <body>
     <main class="m-8 "><${input.renderBody}/></main>

@@ -13,7 +13,7 @@ export async function getNotes() {
 export async function getNote(slug: string) {
   const query = xataWorker("getNote", async ({ xata }, slug: string) => {
     return await xata.db.notes.filter("slug", slug).getFirst({
-      cache: 86400 * 15,
+      // cache: 86400 * 15,
       columns: ["*", "author.*"],
     });
   });

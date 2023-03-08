@@ -1,16 +1,11 @@
 import { getNote } from "../../../lib/query";
 
-<await(getNote(input.params?.slug)) client-reorder>
+<pre>${JSON.stringify(input)}</pre>
+
+<await(getNote(input.params?.id ?? "")) client-reorder>
   <@then|note|>
     <div class=" flex items-center justify-between mb-6">
       <h1 class=" text-lg font-medium">${note?.title}</h1>
-
-      <form method="post">
-        <label.hidden for="slug">Delete Note</label>
-        <input#slug name="slug" type="hidden" value=(input.params?.slug ?? "")>
-        // <dots slug=(input.params.slug ?? "")/>
-
-      </form>
     </div>
     <div class=" flex items-center justify-start space-x-3 mb-6">
       <h1>By ${note?.author?.name}</h1>

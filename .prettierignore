@@ -2,3 +2,4 @@ dist
 build
 .netlify
 netlify
+.marko-run

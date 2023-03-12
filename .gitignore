@@ -3,6 +3,6 @@
 dist
 build
 node_modules
-.marko-run
+# .marko-run
 
 .env

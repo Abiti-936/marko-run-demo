@@ -19,6 +19,7 @@
     "@types/node": "^18.15.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
+    "@xata.io/cli": "^0.11.13",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.36.0",
     "husky": "^8.0.3",

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "marko-run build",
     "dev": "marko-run",
+    "start": "marko-run preview",
     "fmt": "prettier --write .",
     "lint": "eslint . --fix",
     "prepare": "husky install"

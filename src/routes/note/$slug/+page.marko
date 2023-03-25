@@ -1,16 +1,23 @@
 import { getNote } from "../../../lib/query";
 
-<await(getNote($global.params?.slug)) client-reorder>
+<await(
+  getNote($global.params?.slug, "57c4c847-8fc9-4777-a72a-666835aac5e8"),
+) client-reorder>
   <@then|note|>
     <div class=" flex items-center justify-between mb-6">
-      <h1 class=" text-lg font-medium">${note?.title}</h1>
+      <h1 class=" text-lg font-medium">
+        ${note?.title}
+      </h1>
 
       <form method="post">
-        <label.hidden for="slug">Delete Note</label>
-        <input#slug
+        <label for="slug" class="hidden">
+          Delete Note
+        </label>
+        <input
           name="slug"
           type="hidden"
           value=($global.params?.slug ?? "")
+          id="slug"
         >
         // <dots slug=($global.params.slug ?? "")/>
 
@@ -26,16 +33,21 @@ import { getNote } from "../../../lib/query";
       >
     </div>
 
-    <div#accordion-color-body-1
+    <div
       class=""
       aria-labelledby="accordion-color-heading-1"
+      id="accordion-color-body-1"
     >
       <div class=" p-5 font-light border rounded-xl border-gray-200 dark:border-gray-700 dark:bg-[#121212] gray-900">
         <section class=" text-base font-normal mb-2 text-gray-500 dark:text-white">
-          <div class=" prose dark:prose-invert">$!{note?.body}</div>
+          <div class=" prose dark:prose-invert">
+            $!{note?.body}
+          </div>
         </section>
       </div>
     </div>
   </@then>
-  <@placeholder><spinner/></@placeholder>
+  <@placeholder>
+    <spinner/>
+  </@placeholder>
 </await>

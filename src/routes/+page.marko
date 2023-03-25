@@ -1,11 +1,13 @@
 import { getNotes } from "../lib/query";
 
-<h1 class=" mb-6 mx-2 text-xl font-medium">Notes</h1>
+<h1 class=" mb-6 mx-2 text-xl font-medium">
+  Notes
+</h1>
 
-<await(getNotes()) client-reorder>
+<await(getNotes("57c4c847-8fc9-4777-a72a-666835aac5e8")) client-reorder>
   <@then|notes|>
     <ul class=" space-y-2">
-      <for|note| of=notes!>
+      <for|note| of=notes>
         <li class=" mx-2">
           <div class=" max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-[#121212] dark:border-gray-700">
             <span class=" mb-2 text-lg font-medium text-gray-900 dark:text-white trancate">
@@ -19,7 +21,9 @@ import { getNotes } from "../lib/query";
               class=" flex items-center space-x-2 mt-2 text-2xl"
               href=`/note/${note?.slug}`
             >
-              <span class=" text-base">Details</span>
+              <span class=" text-base">
+                Details
+              </span>
 
               <span>&#8594;</span>
             </a>
@@ -35,5 +39,7 @@ import { getNotes } from "../lib/query";
       <span>&#8594;</span>
     </a> */
   </@then>
-  <@placeholder><spinner/></@placeholder>
+  <@placeholder>
+    <spinner/>
+  </@placeholder>
 </await>

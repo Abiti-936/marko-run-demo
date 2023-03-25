@@ -1,7 +1,7 @@
 {
-  "databaseURL": "https://aman-coder-workspace-aecq9c.eu-west-1.xata.sh/db/notes",
+  "databaseURL": "https://aman-codespace-4l60en.eu-west-1.xata.sh/db/notes",
   "codegen": {
     "output": "src/lib/xata.ts",
-    "workersBuildId": "cg6oeo3tbhkmciakk33g"
+    "workersBuildId": "cgf7f7unhi1ncsutis10"
   }
 }

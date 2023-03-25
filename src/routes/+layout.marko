@@ -12,9 +12,13 @@ export type Input = {
       <meta name="description" content="A Remarkable Notes App.">
       <title>Remarkable Notes</title>
     </if>
-    <else><${input.head}/></else>
+    <else>
+      <${input.head}/>
+    </else>
   </head>
   <body>
-    <main class="m-8 "><${input.renderBody}/></main>
+    <main class="m-8 ">
+      <${input.renderBody}/>
+    </main>
   </body>
 </html>

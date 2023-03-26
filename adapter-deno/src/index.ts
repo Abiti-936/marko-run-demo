@@ -6,6 +6,7 @@ import bundle from "@hattip/bundler-deno";
 import { existsSync } from "fs";
 import { spawn } from "child_process";
 import { PassThrough } from "stream";
+import type { tsPropertySignature } from "@marko/compiler/babel-types";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -64,6 +65,7 @@ export default function netlifyAdapter(): Adapter {
     async buildEnd(config, _routes, builtEntries, _sourceEntries) {
       const entry = builtEntries[0];
       const distDir = path.dirname(entry);
+      const buildDir = path.join(config.root, "build");
 
       const esbuildOptionsFn = (options: any) => {
         options.minify = false;
@@ -73,7 +75,12 @@ export default function netlifyAdapter(): Adapter {
         options.inject = [];
       };
 
-      const outDir = path.join(distDir, "server.js");
+      const outDir = path.join(buildDir, "server.js");
+
+      await fs.cp(distDir, path.join(buildDir, "public"), {
+        recursive: true,
+        force: true,
+      });
 
       await bundle({ input: entry, output: outDir }, esbuildOptionsFn);
 
@@ -84,7 +91,14 @@ export default function netlifyAdapter(): Adapter {
         });
       }
 
-      await fs.rm(path.join(distDir, "index.mjs"));
+      await fs.rm(path.join(config.root, "dist"), {
+        recursive: true,
+        force: true,
+      });
+
+      await fs.rename(path.join(buildDir), distDir);
+
+      await fs.rm(path.join(distDir, "public", "index.mjs"));
     },
   };
 }

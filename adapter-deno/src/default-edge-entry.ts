@@ -8,7 +8,7 @@ serve(
     const isAsset = pathname.startsWith("/assets/");
 
     try {
-      const file = await Deno.readFile(`./${pathname}`);
+      const file = await Deno.readFile(`./public${pathname}`);
 
       return new Response(file, {
         headers: {

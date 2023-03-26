@@ -2,9 +2,9 @@ name: Deploy to Deno Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [try-deno-deploy]
   pull_request:
-    branches: [main]
+    branches: [try-deno-deploy]
 
   workflow_dispatch:
 
@@ -22,7 +22,7 @@ jobs:
           node-version: "18.x"
           cache: "npm"
 
-      - run: npm run install
+      - run: npm install
       - run: npm run build
       
       - uses: denoland/deployctl@v1

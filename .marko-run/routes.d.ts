@@ -4,7 +4,6 @@
 */
 
 import type { HandlerLike, Route as AnyRoute, Context as AnyContext, ParamsObject, ValidatePath, ValidateHref } from "@marko/run";
-import type { NetlifyEdgePlatformInfo } from '@marko/run-adapter-netlify';
 
 interface NoParams extends ParamsObject {}
 interface NoMeta {}
@@ -26,7 +25,7 @@ declare global {
     type GetableHref<T extends string> = ValidateHref<Get, T>; 
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
-    type Platform = NetlifyEdgePlatformInfo;
+    type Platform = unknown;
   }
 }
 
@@ -42,7 +41,7 @@ declare module '../src/routes/+page.marko' {
     type GetableHref<T extends string> = ValidateHref<Get, T>; 
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
-    type Platform = NetlifyEdgePlatformInfo;
+    type Platform = unknown;
     type Route = Route1;
     type Context = AnyContext<Platform, Route> & Marko.Global;
     type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;
@@ -65,7 +64,7 @@ declare module '../src/routes/note/$slug/+page.marko' {
     type GetableHref<T extends string> = ValidateHref<Get, T>; 
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
-    type Platform = NetlifyEdgePlatformInfo;
+    type Platform = unknown;
     type Route = Route2;
     type Context = AnyContext<Platform, Route> & Marko.Global;
     type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;
@@ -88,7 +87,7 @@ declare module '../src/routes/+layout.marko' {
     type GetableHref<T extends string> = ValidateHref<Get, T>; 
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
-    type Platform = NetlifyEdgePlatformInfo;
+    type Platform = unknown;
     type Route = Route1 | Route2;
     type Context = AnyContext<Platform, Route> & Marko.Global;
     type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;
@@ -109,7 +108,7 @@ declare module '../src/routes/+404.marko' {
     type GetableHref<T extends string> = ValidateHref<Get, T>; 
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
-    type Platform = NetlifyEdgePlatformInfo;
+    type Platform = unknown;
     type Route = AnyRoute;
     type Context = AnyContext<Platform, Route> & Marko.Global;
     type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;
@@ -132,7 +131,7 @@ declare module '../src/routes/+500.marko' {
     type GetableHref<T extends string> = ValidateHref<Get, T>; 
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
-    type Platform = NetlifyEdgePlatformInfo;
+    type Platform = unknown;
     type Route = AnyRoute;
     type Context = AnyContext<Platform, Route> & Marko.Global;
     type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;

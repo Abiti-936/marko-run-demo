@@ -22,7 +22,7 @@ jobs:
           node-version: "18.x"
           cache: "npm"
 
-      - run: npm install
+      - run: npm install && cd ./adapter-deno/ && npm install 
       - run: npm run build
       
       - uses: denoland/deployctl@v1

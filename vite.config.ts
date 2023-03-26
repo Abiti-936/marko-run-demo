@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
 import marko from "@marko/run/vite";
-import denoAdapter from "./adapter-deno/src";
+import cloudflarePagesAdapter from "./adapter-cloudflare-pages/src";
 
 export default defineConfig({
   plugins: [
     marko({
-      adapter: denoAdapter(),
+      adapter: cloudflarePagesAdapter(),
     }),
   ],
 });

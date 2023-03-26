@@ -1,8 +1,7 @@
 import "../styles/global.css";
-export type Input = {
-  head?: Marko.Body,
-  renderBody: Marko.Body,
-};
+export interface Input {
+  head?: Marko.Body;
+}
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,6 +9,8 @@ export type Input = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <if(!input.head)>
       <meta name="description" content="A Remarkable Notes App.">
+      <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+
       <title>Remarkable Notes</title>
     </if>
     <else>

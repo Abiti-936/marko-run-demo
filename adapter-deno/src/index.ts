@@ -44,7 +44,7 @@ export default function netlifyAdapter(): Adapter {
 
       const args = ["run", "-A", "server.js"];
 
-      const proc = spawn("deno", args, { cwd });
+      const proc = spawn("deno", args, { cwd: path.join(cwd, "dist") });
 
       if (process.env.NODE_ENV !== "test") {
         proc.stdout.pipe(process.stdout);
@@ -77,7 +77,7 @@ export default function netlifyAdapter(): Adapter {
 
       await bundle({ input: entry, output: outDir }, esbuildOptionsFn);
 
-      for (const dir of ["assets"]) {
+      for (const _dir of ["assets"]) {
         await fs.rm(path.join(config.root, "assets"), {
           recursive: true,
           force: true,

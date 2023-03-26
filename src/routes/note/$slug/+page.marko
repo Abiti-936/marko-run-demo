@@ -1,15 +1,14 @@
 import { getNote } from "../../../lib/query";
 
 <await(
-  getNote($global.params?.slug, "57c4c847-8fc9-4777-a72a-666835aac5e8"),
+  getNote($global.params.slug, "57c4c847-8fc9-4777-a72a-666835aac5e8"),
 ) client-reorder>
   <@then|note|>
     <div class=" flex items-center justify-between mb-6">
       <h1 class=" text-lg font-medium">
         ${note?.title}
       </h1>
-
-      <form method="post">
+      /* <form method="post">
         <label for="slug" class="hidden">
           Delete Note
         </label>
@@ -21,7 +20,7 @@ import { getNote } from "../../../lib/query";
         >
         // <dots slug=($global.params.slug ?? "")/>
 
-      </form>
+      </form> */
     </div>
     <div class=" flex items-center justify-start space-x-3 mb-6">
       <h1>By ${note?.author?.name}</h1>

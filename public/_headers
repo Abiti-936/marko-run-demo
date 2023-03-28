@@ -1,8 +1,0 @@
-/images/*
-  cache-control: public, max-age=2592000, s-maxage=2592000, stale-if-error=2592000, stale-while-revalidate=2592000
-
-/fonts/*
-  cache-control: public, max-age=2592000, s-maxage=2592000, stale-if-error=2592000, stale-while-revalidate=2592000
-
-/assets/*
-  cache-control: public, max-age=2592000, s-maxage=2592000, stale-if-error=2592000, stale-while-revalidate=2592000

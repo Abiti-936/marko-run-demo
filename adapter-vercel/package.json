@@ -1,0 +1,61 @@
+{
+  "name": "@marko/run-adapter-cloudflare-pages",
+  "version": "0.1.2",
+  "description": "Preview and deploy @marko/run apps to Cloudflare Pages",
+  "license": "MIT",
+  "homepage": "https://github.com/marko-js/run/tree/main/packages/adapters/node",
+  "logo": {
+    "url": "https://github.com/marko-js/run/raw/main/assets/marko-run.png"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marko-js/run.git"
+  },
+  "author": "Ryan Turnquist <rturnq@gmail.com>",
+  "keywords": [
+    "marko"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "",
+    "build": "tsx scripts/build.ts"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@marko/run": "^0.1.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230321.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.7.6",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.15.7",
+    "mocha": "^10.0.0",
+    "mocha-snap": "^4.3.0",
+    "prettier": "^2.7.1",
+    "tsx": "^3.9.0",
+    "typescript": "^4.7.4",
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "@hattip/bundler-vercel": "^0.0.33"
+  }
+}

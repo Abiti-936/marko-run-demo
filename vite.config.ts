@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
 import marko from "@marko/run/vite";
-import cloudflarePagesAdapter from "./adapter-cloudflare-pages/src";
+import vercelAdapter from "./adapter-vercel/src";
 
 export default defineConfig({
   plugins: [
     marko({
-      adapter: cloudflarePagesAdapter(),
+      adapter: vercelAdapter(),
     }),
   ],
 });

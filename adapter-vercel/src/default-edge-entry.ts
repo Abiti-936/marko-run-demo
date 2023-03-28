@@ -2,10 +2,8 @@
 
 import { fetch } from "@marko/run/router";
 
-export const onRequest: PagesFunction = async (context) => {
-  const response = await fetch(context.request, {
-    context,
-  });
+export default async function handler(request: Request) {
+  const response = await fetch(request);
 
-  return response || context.next();
+  return response;
 };

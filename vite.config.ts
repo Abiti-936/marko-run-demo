@@ -1,13 +1,11 @@
 import { defineConfig } from "vite";
 import marko from "@marko/run/vite";
-import netlifyAdapter from "@marko/run-adapter-netlify";
+import cloudflarePagesAdapter from "./adapter-cloudflare-pages/src";
 
 export default defineConfig({
   plugins: [
     marko({
-      adapter: netlifyAdapter({
-        edge: true,
-      }),
+      adapter: cloudflarePagesAdapter(),
     }),
   ],
 });

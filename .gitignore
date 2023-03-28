@@ -1,8 +1,8 @@
-/netlify
-.netlify
 dist
+/dist
 build
 node_modules
 # .marko-run
 
 .env
+/functions/*.js

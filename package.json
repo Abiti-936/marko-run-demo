@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@hattip/bundler-cloudflare-workers": "^0.0.33",
+    "@hattip/bundler-vercel": "^0.0.33",
     "@antfu/ni": "^0.20.0",
     "@marko/compiler": "^5.27.3",
     "@marko/run": "^0.1.5",

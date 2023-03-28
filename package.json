@@ -11,8 +11,8 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@hattip/bundler-vercel": "^0.0.33",
     "@antfu/ni": "^0.20.0",
+    "@hattip/bundler-vercel": "^0.0.33",
     "@marko/compiler": "^5.27.3",
     "@marko/run": "^0.1.5",
     "@marko/run-adapter-netlify": "^0.1.2",
@@ -30,6 +30,7 @@
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "prettier-plugin-marko": "^1.4.1",
+    "replace-in-file": "^6.3.5",
     "rollup": "^3.20.2",
     "tailwindcss": "^3.2.7",
     "typescript": "^5.0.2",

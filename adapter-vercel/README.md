@@ -6,16 +6,16 @@
     <img alt="Marko Run Logo" src="https://github.com/marko-js/run/raw/main/assets/marko-run.png" width="400">
   </picture>
   <br/>
-  @marko/run-adapter-cloudflare-pages
+  @marko/run-adapter-vercel
 	<br/>
 </h1>
 
-Preview and deploy [@marko/run](../serve/README.md) apps to Cloudflare Pages
+Preview and deploy [@marko/run](../serve/README.md) apps to Vercel
 
 ## Intallation
 
 ```sh
-npm install @marko/run-adapter-cloudflare-pages
+npm install @marko/run-adapter-vercel
 ```
 
 ## Usage
@@ -25,12 +25,12 @@ In your application's Vite config file (eg. `vite.config.js`), import and regist
 ```ts
 import { defineConfig } from "vite";
 import marko from "@marko/run/vite";
-import cloudflarePagesAdapter from "@marko/run-adapter-cloudflare-pages";
+import vercelAdapter from "@marko/run-adapter-vercel";
 
 export default defineConfig({
   plugins: [
     marko({
-      adapter: cloudflarePagesAdapter(),
+      adapter: vercelAdapter(),
     }),
   ],
 });

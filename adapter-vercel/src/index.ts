@@ -5,6 +5,7 @@ import baseAdapter, { type Adapter } from "@marko/run/adapter";
 import { bundle } from "@hattip/bundler-vercel";
 import { existsSync } from "fs";
 import { spawn } from "child_process";
+import replace from "replace-in-file";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -35,7 +36,10 @@ export default function netlifyAdapter(): Adapter {
 
     startDev,
 
-    async startPreview(_entry, options) {
+    async startPreview(
+      _entry: any,
+      options: { port?: 8888 | undefined; cwd: any }
+    ) {
       const { port = 8888, cwd } = options;
 
       // eslint-disable-next-line no-debugger
@@ -60,7 +64,12 @@ export default function netlifyAdapter(): Adapter {
       };
     },
 
-    async buildEnd(config, _routes, builtEntries, _sourceEntries) {
+    async buildEnd(
+      config: { root: string },
+      _routes: any,
+      builtEntries: any[],
+      _sourceEntries: any
+    ) {
       const entry = builtEntries[0];
       const distDir = path.dirname(entry);
 
@@ -75,7 +84,20 @@ export default function netlifyAdapter(): Adapter {
       await bundle({
         edgeEntry: entry,
         staticDir: distDir,
+        manipulateEsbuildOptions: esbuildOptionsFn,
       });
+
+      const options = {
+        files: `${config.root}/.vercel/output/**/*.js`,
+        from: /process[.]/g,
+        to: "process?.",
+      };
+
+      try {
+        await replace(options);
+      } catch (error) {
+        console.error("Error occurred:", error);
+      }
 
       for (const _dir of ["assets"]) {
         await fs.rm(path.join(config.root, "assets"), {

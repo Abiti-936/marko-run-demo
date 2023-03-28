@@ -89,8 +89,8 @@ export default function netlifyAdapter(): Adapter {
 
       const options = {
         files: `${config.root}/.vercel/output/**/*.js`,
-        from: /process[.]/g,
-        to: "process?.",
+        from: /(process[.](?!env))/g,
+        to: "[].length && process.",
       };
 
       try {

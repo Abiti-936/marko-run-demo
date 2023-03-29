@@ -1,0 +1,124 @@
+import { marked } from "marked";
+import xss from "xss";
+
+<attrs/{ markdown }/>
+
+<let/md=(markdown ?? "")/>
+<let/html=""/>
+<let/isEditing=false/>
+
+<div class="w-full mt-3 border rounded-lg border-gray-200 bg-gray-50 dark:bg-[#121212] dark:border-gray-700">
+  <div class="bg-white dark:bg-[#121212] border-gray-200 dark:border-gray-700">
+    <nav
+      aria-label="Tabs"
+      role="tablist"
+      class="flex items-center justify-evenly"
+    >
+      <button
+        type="button"
+        onClick() { isEditing = !isEditing; }
+        class=[
+          {
+            "bg-white dark:bg-[#121212]": !isEditing,
+            "bg-slate-100 dark:bg-[#121212] border": isEditing,
+          },
+          "w-[50%] rounded-tl-lg -mb-px py-3 px-4 inline-flex space-x-1 items-center justify-center gap-2 text-sm font-medium text-center hover:text-gray-700 dark:bg-[#12122] dark:border-gray-700 dark:text-gray-300",
+        ]
+        data-hs-tab="#card-type-tab-1"
+        aria-controls="card-type-tab-1"
+        role="tab"
+        id="card-type-tab-item-1"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24px"
+          height="24px"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-4 h-4"
+        >
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+        <span class="font-normal">
+          Edit a note
+        </span>
+      </button>
+      <button
+        type="button"
+        onClick() {
+          isEditing = !isEditing;
+          const body = marked(md);
+          html = xss(body, {
+            stripIgnoreTag: true,
+            stripIgnoreTagBody: true,
+            stripBlankChar: true,
+            escapeHtml: (html: string) =>
+              html.replace(/</g, "&lt;").replace(/>/g, "&gt;"),
+          });
+        }
+        class=[
+          {
+            "bg-slate-100 dark:bg-[#121212] rounded-tr-lg border": !isEditing,
+            "bg-white dark:bg-[#121212]": isEditing,
+          },
+          "w-[50%] -mb-px py-3 px-4 inline-flex justify-center space-x-1 items-center gap-2 text-sm font-medium text-center hover:text-gray-700 dark:bg-[#121212] dark:border-gray-700 dark:text-gray-300 dark:hover:text-gray-300",
+        ]
+        data-hs-tab="#card-type-tab-2"
+        aria-controls="card-type-tab-2"
+        role="tab"
+        id="card-type-tab-item-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-4 h-4"
+        >
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span class="font-normal">
+          Preview
+        </span>
+      </button>
+    </nav>
+
+    <hr class="h-px pt-6 border-0 dark:bg-[#121212]">
+  </div>
+  <div class="px-4 py-4 bg-white rounded-b-lg dark:bg-[#121212]">
+    <label for="markdown" class="sr-only">
+      Save note
+    </label>
+    <textarea
+      name="markdown"
+      rows=8
+      value:=md
+      class=[
+        {
+          hidden: isEditing,
+        },
+        "block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-[#121212] focus:ring-0 dark:text-white dark:placeholder-white",
+      ]
+      placeholder="Write a note..."
+      required
+      id="markdown"
+    />
+
+    <if=isEditing>
+      <div class="prose dark:prose-invert">
+        $!{html}
+      </div>
+    </if>
+  </div>
+</div>

@@ -10,12 +10,15 @@ interface NoMeta {}
 
 type Get =
   | '/'
-  | '/note/${slug}';
+  | '/note/${slug}'
+  | '/note/create';
 
-type Post = never;
+type Post =
+  | '/note/create';
 
 type Route1 = AnyRoute<NoParams, NoMeta, `/`>;
 type Route2 = AnyRoute<{ slug: string; }, NoMeta, `/note/:slug`>;
+type Route3 = AnyRoute<NoParams, NoMeta, `/note/create`>;
 
 declare global {
   namespace MarkoRun {
@@ -26,6 +29,25 @@ declare global {
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
     type Platform = unknown;
+  }
+}
+
+declare module '../src/routes/note/create/+handler' {
+  namespace MarkoRun {
+    type GetPaths = Get;
+    type PostPaths = Post;
+    type GetablePath<T extends string> = ValidatePath<Get, T>;
+    type GetableHref<T extends string> = ValidateHref<Get, T>; 
+    type PostablePath<T extends string> = ValidatePath<Post, T>;
+    type PostableHref<T extends string> = ValidateHref<Post, T>;
+    type Platform = unknown;
+    type Route = Route3;
+    type Context = AnyContext<Platform, Route>;
+    type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;
+    function route(handler: Handler): typeof handler;
+    function route<_Params = Route['params'], _Meta = Route['meta']>(handler: Handler): typeof handler;
+    const NotHandled: unique symbol;
+    const NotMatched: unique symbol;
   }
 }
 
@@ -75,6 +97,29 @@ declare module '../src/routes/note/$slug/+page.marko' {
   }
 }
 
+declare module '../src/routes/note/create/+page.marko' {
+  export interface Input {
+    renderBody: Marko.Body;
+  }
+
+  namespace MarkoRun {
+    type GetPaths = Get;
+    type PostPaths = Post;
+    type GetablePath<T extends string> = ValidatePath<Get, T>;
+    type GetableHref<T extends string> = ValidateHref<Get, T>; 
+    type PostablePath<T extends string> = ValidatePath<Post, T>;
+    type PostableHref<T extends string> = ValidateHref<Post, T>;
+    type Platform = unknown;
+    type Route = Route3;
+    type Context = AnyContext<Platform, Route> & Marko.Global;
+    type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;
+    function route(handler: Handler): typeof handler;
+    function route<_Params = Route['params'], _Meta = Route['meta']>(handler: Handler): typeof handler;
+    const NotHandled: unique symbol;
+    const NotMatched: unique symbol;
+  }
+}
+
 declare module '../src/routes/+layout.marko' {
   export interface Input {
     renderBody: Marko.Body;
@@ -88,7 +133,7 @@ declare module '../src/routes/+layout.marko' {
     type PostablePath<T extends string> = ValidatePath<Post, T>;
     type PostableHref<T extends string> = ValidateHref<Post, T>;
     type Platform = unknown;
-    type Route = Route1 | Route2;
+    type Route = Route1 | Route2 | Route3;
     type Context = AnyContext<Platform, Route> & Marko.Global;
     type Handler<_Params = Route['params'], _Meta = Route['meta']> = HandlerLike<Route>;
     function route(handler: Handler): typeof handler;

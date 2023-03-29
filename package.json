@@ -16,6 +16,7 @@
     "@marko/compiler": "^5.27.3",
     "@marko/run": "^0.1.5",
     "@marko/run-adapter-netlify": "^0.1.2",
+    "@marko/tags-api-preview": "^0.6.1",
     "@marko/vite": "^2.3.14",
     "@tailwindcss/typography": "^0.5.9",
     "@types/marked": "^4.0.8",

@@ -31,13 +31,16 @@ import { getNotes } from "../lib/query";
         </li>
       </for>
     </ul>
-    /* <a class=" flex items-center space-x-2 mt-4 mx-2 text-2xl" href=`/create`>
+    <a
+      class=" flex items-center space-x-2 mt-4 mx-2 text-2xl"
+      href=`/note/create`
+    >
       <span class=" text-base">
         Create ${notes?.length ? "more notes" : "a note"}
       </span>
 
       <span>&#8594;</span>
-    </a> */
+    </a>
   </@then>
   <@placeholder>
     <spinner/>

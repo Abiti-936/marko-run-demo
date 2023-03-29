@@ -20,6 +20,7 @@
     "@marko/vite": "^2.3.14",
     "@tailwindcss/typography": "^0.5.9",
     "@types/marked": "^4.0.8",
+    "@types/sanitize-html": "^2.8.0",
     "@types/node": "^18.15.8",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
@@ -42,6 +43,7 @@
     "marked": "^4.3.0",
     "marko": "^5.25.3",
     "url-slug": "^3.0.4",
-    "xss": "^1.0.14"
+    "xss": "^1.0.14",
+    "sanitize-html": "^2.10.0"
   }
 }

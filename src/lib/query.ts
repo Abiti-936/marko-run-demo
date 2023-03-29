@@ -2,7 +2,7 @@ import { NotesRecord, xataWorker } from "./xata";
 import urlSlug from "url-slug";
 import { marked } from "marked";
 import { z } from "zod";
-import xss from "xss";
+import sanitize from "sanitize-html";
 
 export async function getNotes(uid: string) {
   const query = xataWorker("getNotes", async ({ xata }, uid: string) => {
@@ -44,12 +44,11 @@ export function filterNotes(data: NotesRecord, author: string) {
     const slug = urlSlug(title);
 
     const html = marked(markdown);
-    const body = xss(html, {
-      stripIgnoreTagBody: true,
-      stripBlankChar: true,
-      stripIgnoreTag: true,
-      escapeHtml: (html: string) =>
-        html.replace(/</g, "&lt;").replace(/>/g, "&gt;"),
+
+    const body = sanitize(html, {
+      allowedTags: sanitize.defaults.allowedTags.concat(["img"]),
+      allowedSchemes: ["https"],
+      disallowedTagsMode: "discard",
     });
 
     return {

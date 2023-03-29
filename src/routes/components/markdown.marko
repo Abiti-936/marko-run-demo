@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import xss from "xss";
+import sanitize from "sanitize-html";
 
 <attrs/{ markdown }/>
 
@@ -53,12 +53,10 @@ import xss from "xss";
         onClick() {
           isEditing = !isEditing;
           const body = marked(md);
-          html = xss(body, {
-            stripIgnoreTag: true,
-            stripIgnoreTagBody: true,
-            stripBlankChar: true,
-            escapeHtml: (html: string) =>
-              html.replace(/</g, "&lt;").replace(/>/g, "&gt;"),
+          html = sanitize(body, {
+            allowedTags: sanitize.defaults.allowedTags.concat(["img"]),
+            allowedSchemes: ["https"],
+            disallowedTagsMode: "discard",
           });
         }
         class=[

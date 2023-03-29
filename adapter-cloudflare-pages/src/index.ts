@@ -41,7 +41,7 @@ export default function netlifyAdapter(): Adapter {
       // eslint-disable-next-line no-debugger
       debugger;
 
-      const args = ["pages", "dev", "--port", port.toString()];
+      const args = ["pages", "dev", "./dist/", "--port", port.toString()];
 
       const proc = spawn("wrangler", args, { cwd: path.join(cwd, "dist") });
 

@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@xata.io/client": "^0.26.0",
-    "marked": "^4.3.0",
+    "marked": "^8.0.0",
     "marko": "^5.25.3",
     "url-slug": "^3.0.4",
     "xss": "^1.0.14"

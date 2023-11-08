@@ -35,7 +35,7 @@
     "vite": "^4.2.1"
   },
   "dependencies": {
-    "@xata.io/client": "^0.26.0",
+    "@xata.io/client": "^0.27.0",
     "marked": "^4.3.0",
     "marko": "^5.25.3",
     "url-slug": "^3.0.4",

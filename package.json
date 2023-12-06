@@ -13,7 +13,7 @@
   "devDependencies": {
     "@antfu/ni": "^0.21.0",
     "@marko/compiler": "^5.27.3",
-    "@marko/run": "^0.3.0",
+    "@marko/run": "^0.4.0",
     "@marko/run-adapter-netlify": "^0.1.2",
     "@marko/vite": "^4.0.0",
     "@tailwindcss/typography": "^0.5.9",

@@ -25,7 +25,7 @@
     "autoprefixer": "^10.4.14",
     "esbuild": "^0.19.0",
     "eslint": "^8.36.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "prettier-plugin-marko": "^2.0.0",

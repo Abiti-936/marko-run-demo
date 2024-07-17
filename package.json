@@ -21,7 +21,7 @@
     "@types/node": "^18.15.8",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "@xata.io/cli": "^0.15.0",
+    "@xata.io/cli": "^0.16.0",
     "autoprefixer": "^10.4.14",
     "esbuild": "^0.23.0",
     "eslint": "^8.36.0",

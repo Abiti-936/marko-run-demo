@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.22.0",
+    "@antfu/ni": "^0.23.0",
     "@marko/compiler": "^5.27.3",
     "@marko/run": "^0.4.0",
     "@marko/run-adapter-netlify": "^0.1.2",
